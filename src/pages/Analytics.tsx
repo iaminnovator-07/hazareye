@@ -57,6 +57,7 @@ const Analytics = () => {
     const unsub = onValue(histRef, (snap) => {
       const data = snap.val();
       if (!data) { setHistoryData([]); return; }
+<<<<<<< HEAD
       const now = Date.now();
       const entries = Object.values(data as Record<string, HistoryEntry>)
         .map((e) => ({
@@ -65,6 +66,11 @@ const Analytics = () => {
           timestamp: e.timestamp < 1e12 ? e.timestamp * 1000 : e.timestamp,
         }))
         .filter((e) => e.timestamp >= now - config.ms)
+=======
+      const cutoff = Date.now() - config.ms;
+      const entries = Object.values(data as Record<string, HistoryEntry>)
+        .filter((e) => e.timestamp >= cutoff)
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
         .sort((a, b) => a.timestamp - b.timestamp);
       setHistoryData(entries);
     });
@@ -107,7 +113,11 @@ const Analytics = () => {
 
       <div className="section-container py-6">
         {/* Device + Time Range Selectors */}
+<<<<<<< HEAD
         <div className="flex flex-col gap-4 mb-6">
+=======
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
           <div className="flex items-center gap-2 flex-wrap">
             {devices.map((d) => (
               <button
@@ -123,7 +133,11 @@ const Analytics = () => {
               </button>
             ))}
           </div>
+<<<<<<< HEAD
           <div className="flex items-center gap-2 flex-wrap">
+=======
+          <div className="flex items-center gap-2">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
             {(Object.keys(RANGE_CONFIG) as TimeRange[]).map((r) => (
               <button
                 key={r}
@@ -139,7 +153,11 @@ const Analytics = () => {
         </div>
 
         {/* Summary Cards */}
+<<<<<<< HEAD
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+=======
+        <div className="grid grid-cols-3 gap-4 mb-6">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-5 text-center">
             <p className="text-xs text-muted-foreground font-display tracking-wider mb-1">AVG TEMPERATURE</p>
             <p className="text-2xl font-display font-bold text-foreground">{avg("temperature")}°C</p>

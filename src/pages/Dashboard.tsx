@@ -95,9 +95,13 @@ const Dashboard = () => {
       if (!data) { setIsOnline(false); return; }
 
       const now = Date.now();
+<<<<<<< HEAD
       // Normalize: if timestamp is in seconds (< 1e12), convert to ms
       const rawTs = data.timestamp || now;
       const ts = rawTs < 1e12 ? rawTs * 1000 : rawTs;
+=======
+      const ts = data.timestamp || now;
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
       setLastSeen(ts);
       setIsOnline(now - ts < OFFLINE_TIMEOUT);
 
@@ -218,7 +222,11 @@ const Dashboard = () => {
             )}
 
             {/* Device Info */}
+<<<<<<< HEAD
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-4 sm:p-6 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+=======
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
               <div>
                 <h2 className="font-display text-lg font-bold text-foreground mb-1">{currentDevice.device_name}</h2>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
@@ -244,7 +252,11 @@ const Dashboard = () => {
             </motion.div>
 
             {/* Sensor Cards */}
+<<<<<<< HEAD
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+=======
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
               <SensorCard
                 title="Distance"
                 value={sensorData ? `${sensorData.distance} cm` : "—"}
@@ -280,7 +292,11 @@ const Dashboard = () => {
             </div>
 
             {/* Charts */}
+<<<<<<< HEAD
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+=======
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+>>>>>>> 25fd855714dd7c1f71da56d8c03ada7841f3cc74
               <ChartCard title="Distance (cm)" data={distData} color="hsl(45, 96%, 53%)" />
               <ChartCard title="Vibration (g)" data={vibData} color="hsl(38, 92%, 50%)" />
               <ChartCard title="Temperature (°C)" data={tempData} color="hsl(45, 96%, 53%)" />
